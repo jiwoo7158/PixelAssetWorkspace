@@ -15,3 +15,7 @@ description: Create and curate independent 2D pixel art items, sprites and atlas
 8. `outputs/sprites` 또는 `outputs/animations`에 PNG/JSON 저장. 생성 설정, 베이스 경로, 변경사항을 기록한다.
 
 게임 엔진에 자동 복사하거나 LÖVE2D 로더를 구현하지 않는다.
+
+## v2: 다른 생성기와의 선택
+
+이 스킬은 모든 작업에 sprite-gen을 강제하지 않는다. `AGENTS.md`, `config/tool-routing.json`, `.agents/skills/tool-selector/SKILL.md`에 따라 `Pixelbolt`(코드/JSON으로 신규 도트 제작), `Codixel`(참고 이미지 기반 코드 도트화·리깅), `sprite-gen`(기존 생성물/시트 처리) 중 적절한 **한 가지**를 고른다. 외부 생성 모델이 필요한 경우 자동 호출하지 말고 사전 승인한다. 지정된 도구가 있으면 다른 도구로 바꾸지 않는다.

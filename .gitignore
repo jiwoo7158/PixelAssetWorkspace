@@ -25,3 +25,15 @@ recipes/vfx/generated/**
 licenses/sources-installed.json
 licenses/third-party/**
 !licenses/third-party/.gitkeep
+
+# v2: additional third-party checkouts (never commit vendor trees)
+tools/agent-sprite-forge/
+tools/codixel/
+tools/pixelbolt/
+tools/2dimg2motion/
+tools/pixeloe/
+tools/.installing-*/
+.venv-pixeloe/
+.pixelasset-backups/
+# An extracted update package is temporary; remove after applying.
+PixelAssetWorkspace-Update-v2/

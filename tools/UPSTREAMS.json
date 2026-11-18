@@ -1,29 +1,151 @@
 {
-  "note": "GitHub source repositories are downloaded by scripts/setup-windows.ps1; no full upstream source is packaged in this ZIP.",
+  "schema": "pixelasset/upstreams-v2",
+  "readme_ko": "모든 소스는 공식 GitHub 저장소에서 지정 커밋을 가져옵니다. 기본 설치는 8개 소스를 내려받지만 무거운 Python 의존성과 외부 생성 모델은 자동 설치/호출하지 않습니다. 업스트림 소스와 게임 에셋은 Git에 커밋하지 않습니다.",
   "repositories": [
     {
       "name": "sprite-gen",
-      "url": "https://github.com/aldegad/sprite-gen",
+      "url": "https://github.com/aldegad/sprite-gen.git",
+      "revision": "35a27e137bfd72440cc856b080913c66f69c772e",
       "license": "Apache-2.0",
-      "purpose": "sprite curation, alpha extraction, atlas and manifests"
+      "tier": "core",
+      "category": "sprite-processing",
+      "capabilities": [
+        "sprite_generation_via_provider",
+        "animation_from_video",
+        "atlas",
+        "alpha_cleanup",
+        "curation",
+        "recolor"
+      ],
+      "runtime": "python-package",
+      "requires_external_generation_for": [
+        "sprite_generation_via_provider"
+      ]
     },
     {
       "name": "pixelfx",
-      "url": "https://github.com/patch-gg/pixelfx",
+      "url": "https://github.com/patch-gg/pixelfx.git",
+      "revision": "5294518ce7c72e48b6100a744596e0acf57f2826",
       "license": "MIT",
-      "purpose": "code-based VFX sprite sheets"
+      "tier": "core",
+      "category": "procedural-vfx",
+      "capabilities": [
+        "vfx",
+        "animated_effects",
+        "spritesheet"
+      ],
+      "runtime": "node-cli",
+      "requires_external_generation_for": []
     },
     {
       "name": "spritefusion-pixel-snapper",
-      "url": "https://github.com/Hugo-Dz/spritefusion-pixel-snapper",
+      "url": "https://github.com/Hugo-Dz/spritefusion-pixel-snapper.git",
+      "revision": "02f9315d73d3219274d17767b36d9a231a6b1f4b",
       "license": "MIT",
-      "purpose": "optional pixel alignment CLI"
+      "tier": "core",
+      "category": "postprocess",
+      "capabilities": [
+        "grid_snap",
+        "palette_reduce"
+      ],
+      "runtime": "rust-cli-optional",
+      "requires_external_generation_for": []
+    },
+    {
+      "name": "agent-sprite-forge",
+      "url": "https://github.com/0x0funky/agent-sprite-forge.git",
+      "revision": "25203d03900b46b444bdd72a75768c33d1895ad6",
+      "license": "MIT",
+      "tier": "additional",
+      "category": "generative-sprites-maps",
+      "capabilities": [
+        "character_animation",
+        "map_tiles",
+        "character_identity",
+        "video_frame_extraction",
+        "code_art_fallback"
+      ],
+      "runtime": "python-skill-optional",
+      "requires_external_generation_for": [
+        "character_animation",
+        "video_frame_extraction"
+      ]
+    },
+    {
+      "name": "codixel",
+      "url": "https://github.com/mankidev/codixel.git",
+      "revision": "604a9dcbcc4e386bc48188b5f7f49099f5d04db7",
+      "license": "MIT",
+      "tier": "additional",
+      "category": "reference-code-art",
+      "capabilities": [
+        "reference_to_pixel",
+        "rig_animation",
+        "vfx",
+        "spritesheet",
+        "procedural_scene"
+      ],
+      "runtime": "node-library",
+      "requires_external_generation_for": []
+    },
+    {
+      "name": "pixelbolt",
+      "url": "https://github.com/skulitom/Pixelbolt.git",
+      "revision": "a04c606a5e02e5a3954fc00afe08a8549a6f30c7",
+      "license": "MIT",
+      "tier": "additional",
+      "category": "recipe-code-art",
+      "capabilities": [
+        "pixel_sprite",
+        "pixel_animation",
+        "vfx",
+        "tileset",
+        "spritesheet",
+        "fluid_fx"
+      ],
+      "runtime": "node-cli",
+      "requires_external_generation_for": []
+    },
+    {
+      "name": "2dimg2motion",
+      "url": "https://github.com/WU-HAOTIAN34/2dimg2motion.git",
+      "revision": "d4d73e243b6ff64b7cbb3879e45e951f972a7e62",
+      "license": "MIT",
+      "tier": "additional",
+      "category": "imagegen-animation",
+      "capabilities": [
+        "character_animation",
+        "pose_regeneration",
+        "spritesheet",
+        "identity_validation"
+      ],
+      "runtime": "agent-skill",
+      "requires_external_generation_for": [
+        "character_animation",
+        "pose_regeneration"
+      ]
+    },
+    {
+      "name": "pixeloe",
+      "url": "https://github.com/KohakuBlueleaf/PixelOE.git",
+      "revision": "7ce444b36d3876a151d845d4493240e904454d89",
+      "license": "Apache-2.0",
+      "tier": "additional",
+      "category": "postprocess",
+      "capabilities": [
+        "contrast_pixelize",
+        "outline_expansion",
+        "detail_preserving_downsample",
+        "palette_reduce"
+      ],
+      "runtime": "python-heavy-optional",
+      "requires_external_generation_for": []
     }
   ],
   "excluded": [
     {
       "name": "perfectPixel",
-      "reason": "LICENSE full text not confirmed in repository; no automatic vendoring"
+      "reason": "저장소의 상업 재배포 라이선스 원문 확인 전 기본 도입 보류"
     }
   ]
 }

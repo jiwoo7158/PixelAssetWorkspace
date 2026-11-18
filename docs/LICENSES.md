@@ -22,3 +22,15 @@
 설치 스크립트는 각 원본의 LICENSE/NOTICE를 `licenses/third-party/`에 복사하고, 설치 SHA를 `licenses/sources-installed.json`에 기록합니다. ZIP 안에 원본 저장소 전체가 이미 담겨 있다고 해석하지 마세요.
 
 이 문서는 기술 프로젝트의 라이선스 관리용 설명이며, 구체적 법률 판단이 필요한 계약·분쟁에 대한 자문은 아닙니다.
+
+## v2 추가 소스 5개
+
+| 도구 | 라이선스 | 핵심 의무·주의 |
+|---|---|---|
+| [Agent Sprite Forge](https://github.com/0x0funky/agent-sprite-forge) | MIT | 소프트웨어 재배포 시 고지. **외부 이미지/영상 Provider의 별도 권리·요금 조건** 확인 |
+| [Codixel](https://github.com/mankidev/codixel) | MIT | 코드 재배포 시 고지, 참고 이미지의 권리는 별개 |
+| [Pixelbolt](https://github.com/skulitom/Pixelbolt) | MIT | 코드 재배포 시 고지, 레시피 기반 코드 생성 |
+| [2dimg2motion](https://github.com/WU-HAOTIAN34/2dimg2motion) | MIT | 이미지 생성 모델에 접근해야 하는 핵심 기능; 모델 사용 약관 별도 |
+| [PixelOE](https://github.com/KohakuBlueleaf/PixelOE) | Apache 2.0 | 코드 배포 시 LICENSE/NOTICE 및 변경 고지 조건 검토. PyTorch/Slang 등 **의존 패키지는 별도 라이선스** |
+
+실제 라이선스 원문은 설치 시 `licenses/third-party/`에 복사된다. 도구 소스 복제와 사용 가능성을 구분하고, 사용된 Git 커밋을 `licenses/sources-installed.json`에 기록한다. 게임에 PNG를 넣는 경우와 오픈소스 코드를 재배포하는 경우를 혼동하지 않는다.

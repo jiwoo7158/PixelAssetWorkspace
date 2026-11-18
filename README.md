@@ -10,9 +10,10 @@
 
 이 ZIP에는 **작업 공간, 한국어 사용 문서, Codex 전용 스킬 지침, PowerShell 설치·실행 스크립트, 실제 PNG 테스트 에셋**이 포함되어 있습니다.
 
-**GitHub의 대형 오픈소스 저장소 전체 소스는 ZIP에 미포함입니다.** 원본 저장소의 정확한 코드를 가져오도록 아래 `setup-windows.ps1`에서 공식 GitHub 저장소 3개를 `tools/` 아래에 자동으로 내려받습니다. 따라서 **최초 설정 시 인터넷 연결이 필요**합니다. 설정 후에는 설치된 코드와 에셋을 로컬에서 활용할 수 있습니다(단, sprite-gen의 이미지 생성 Provider는 별도 인증·기능이 필요할 수 있음).
+**GitHub의 대형 오픈소스 저장소 전체 소스는 ZIP에 미포함입니다.** 원본 저장소의 정확한 코드를 가져오도록 아래 `setup-windows.ps1`에서 공식 GitHub 저장소 **8개**를 `tools/` 아래에 자동으로 내려받습니다. 따라서 **최초 설정 시 인터넷 연결이 필요**합니다. 설정 후에는 설치된 코드와 에셋을 로컬에서 활용할 수 있습니다(단, sprite-gen의 이미지 생성 Provider는 별도 인증·기능이 필요할 수 있음).
 
-- 포함/다운로드 대상: [`sprite-gen`](https://github.com/aldegad/sprite-gen) (Apache-2.0), [`pixelfx`](https://github.com/patch-gg/pixelfx) (MIT), [`spritefusion-pixel-snapper`](https://github.com/Hugo-Dz/spritefusion-pixel-snapper) (MIT).
+- 기본 도구: [`sprite-gen`](https://github.com/aldegad/sprite-gen) (Apache-2.0), [`pixelfx`](https://github.com/patch-gg/pixelfx) (MIT), [`spritefusion-pixel-snapper`](https://github.com/Hugo-Dz/spritefusion-pixel-snapper) (MIT).
+- 추가 도구: [`Agent Sprite Forge`](https://github.com/0x0funky/agent-sprite-forge), [`Codixel`](https://github.com/mankidev/codixel), [`Pixelbolt`](https://github.com/skulitom/Pixelbolt), [`2dimg2motion`](https://github.com/WU-HAOTIAN34/2dimg2motion), [`PixelOE`](https://github.com/KohakuBlueleaf/PixelOE). 무거운 추가 Python 환경과 이미지/영상 생성 서비스는 별도 승인/설치가 필요합니다.
 - 선택적 참고: [`perfectPixel`](https://github.com/theamusing/perfectPixel) — README와 pyproject에 MIT 표기가 있지만 확인한 시점에 LICENSE 원문 파일이 없어 **자동 다운로드/코드 통합 대상에서 제외**했습니다.
 - 에셋 원본: [Kenney Assets](https://kenney.nl/assets) — **에셋 팩은 선택해서 직접 다운로드**합니다. 사이트에 있는 모든 자료를 임의로 포함하지 않습니다. 팩에 포함된 라이선스도 보관하세요.
 
@@ -47,7 +48,7 @@
 
 1. **Git** — `git --version`이 동작해야 합니다. [공식 사이트](https://git-scm.com/downloads)
 2. **Python 3.11 이상** — `py -3.13 --version` 또는 `python --version` 확인. [공식 사이트](https://www.python.org/downloads/)
-3. **Node.js 18 이상** — `node --version` 확인. [공식 사이트](https://nodejs.org/)
+3. **Node.js 20 이상** — `node --version` 확인. [공식 사이트](https://nodejs.org/)
 4. **VS Code + Codex** — 이미 사용 중인 작업 환경을 그대로 사용합니다.
 5. **선택사항: Rust/Cargo** — Pixel Snapper CLI 설치 시에만 필요. [공식 사이트](https://rustup.rs/)
 
@@ -66,7 +67,7 @@ cd C:\Projects\PixelAssetWorkspace    # 실제 압축 해제한 위치로 변경
 
 스크립트는 다음만 수행합니다.
 
-1. `tools/sprite-gen`, `tools/pixelfx`, `tools/spritefusion-pixel-snapper`를 **공식 GitHub 저장소에서 shallow clone**합니다. 이미 체크아웃이 있으면 자동 덮어쓰지 않습니다.
+1. `tools/UPSTREAMS.json`에 등록된 **8개 공개 GitHub 오픈소스**를 기록된 커밋 SHA로 내려받습니다. 기본 3개만 설치하려면 `-CoreOnly`를 지정합니다. 기존 체크아웃은 자동 덮어쓰지 않습니다.
 2. 프로젝트 루트에 `.venv`를 만들고 `sprite-gen` Python 패키지를 `pip install -e`로 설치합니다.
 3. 확인한 `LICENSE`, `NOTICE`를 `licenses/third-party/`에 보존하고 저장소 커밋 SHA를 기록합니다.
 4. **모델 다운로드, 외부 유료 API 호출, Kenney 에셋 자동 수집, 게임 엔진 연결은 수행하지 않습니다.**
@@ -79,7 +80,7 @@ cd C:\Projects\PixelAssetWorkspace    # 실제 압축 해제한 위치로 변경
 .\scripts\health-check.ps1
 ```
 
-확인 항목: Git/Node/Python, 오픈소스 폴더 존재, `sprite-gen --help`, pixelfx 이펙트 렌더링(옵션).
+확인 항목: Git/Node/Python, 필수 오픈소스 폴더 존재, `sprite-gen --help`, pixelfx 이펙트 렌더링(옵션). 추가 도구는 `scripts/tool-status.ps1`로 상태를 확인합니다.
 
 ---
 
@@ -230,7 +231,7 @@ Codex는 **기본적으로 CLI 실행/코드 작성 도구**입니다. 이미지
 PixelAssetWorkspace/
 ├─ README.md                         # 이 사용 설명서
 ├─ AGENTS.md                         # Codex 공통 지침
-├─ .agents/skills/                   # 프로젝트 전용 Codex 스킬 3개
+├─ .agents/skills/                   # 프로젝트 전용 Codex 스킬(도구 선택/애니메이션/후처리 포함)
 ├─ scripts/                          # 설치·진단·렌더링·Kenney 가져오기
 ├─ tools/                            # 최초 설치 시 GitHub 원본 코드 내려받는 위치
 │  ├─ sprite-gen/                    # [설치 후] Apache-2.0
@@ -254,7 +255,7 @@ PixelAssetWorkspace/
 └─ docs/                              # 정책·실습·문제 해결
 ```
 
-`tools/` 아래 코드는 **업스트림 원본** 취급합니다. 임의로 수정하지 말고, 자체 수정 사항은 `recipes/`에 두거나 명시적으로 별도 패치로 관리하세요. `outputs/`에는 배포 후보 에셋만, `runs/`에는 재생성 가능한 중간 결과를 보관하세요.
+`tools/` 아래 8개 도구 코드는 **업스트림 원본** 취급합니다. 임의로 수정하지 말고, 자체 수정 사항은 `recipes/`에 두거나 명시적으로 별도 패치로 관리하세요. `outputs/`에는 배포 후보 에셋만, `runs/`에는 재생성 가능한 중간 결과를 보관하세요.
 
 ## 9. 자체 데모 에셋 확인
 
@@ -286,7 +287,7 @@ PixelAssetWorkspace/
 A. Git 설치·네트워크를 확인하고 공식 저장소에 브라우저로 접속되는지 확인하세요. 설정 스크립트는 정상적으로 체크아웃된 폴더를 임의로 지우지 않습니다.
 
 **Q. Node.js가 없다고 나와요.**  
-A. Node.js 18 이상 설치 후 VS Code 터미널을 새로 열고 `node --version`을 확인하세요.
+A. Node.js 20 이상 설치 후 VS Code 터미널을 새로 열고 `node --version`을 확인하세요.
 
 **Q. `sprite-gen --help`가 실행되지 않아요.**  
 A. `.venv`가 만들어졌는지와 `pip install -e tools/sprite-gen`이 성공했는지 확인하세요. `scripts/setup-windows.ps1` 재실행도 가능합니다.
@@ -312,3 +313,73 @@ A. 이 워크스페이스는 PNG와 JSON을 **생산**할 뿐 런타임 로더�
 - [Pixel Snapper](https://github.com/Hugo-Dz/spritefusion-pixel-snapper) · [perfectPixel](https://github.com/theamusing/perfectPixel)
 
 현재 구조는 **초기 운영안**이며, 실사용하면서 문제가 드러난 기능만 최소한으로 추가하는 것을 목표로 합니다.
+
+
+## 13. v2: 오픈소스 8개 선택 사용 및 새 Git clone 재설치
+
+이 절은 기존 프로젝트 문서에 추가된 **최신 설치·도구 선택 안내**입니다. 위 2절에서 설명한 기본 3개 위에 5개 도구를 추가하며, 기존 출력 폴더와 레시피를 변경하지 않습니다.
+
+### 13-1. 새 컴퓨터에서 설치
+
+```powershell
+# GitHub에서 프로젝트 복제 (처음 1회)
+git clone https://github.com/jiwoo7158/PixelAssetWorkspace.git
+cd PixelAssetWorkspace
+
+# 8개 소스 저장소 다운로드 + sprite-gen Python 환경 설치
+.\scripts\setup-windows.ps1
+
+# 소스 설치 여부와 실제 로컬 실행 상태 확인
+.\scripts\tool-status.ps1
+
+# 기본 기능 검증: sprite-gen 도움말 + pixelfx 불꽃 렌더링
+.\scripts\health-check.ps1
+```
+
+기본 설치는 **공식 GitHub의 8개 소스 코드를 재현 가능한 커밋으로 다운로드**합니다. `pixelbolt`/`codixel`은 Node.js로 바로 사용할 수 있지만, `2dimg2motion`의 모델 생성 접근성, `Agent Sprite Forge`의 모델/영상 Providers, `PixelOE`의 PyTorch 환경은 별도 조건입니다. **소스만 설치됨 = 모든 기능 사용 가능**이 아닙니다. GitHub에서 외부 오픈소스 코드를 프로젝트 Git 저장소에 넣지는 않습니다.
+
+다른 설치 방식:
+
+```powershell
+.\scripts\setup-windows.ps1 -CoreOnly                  # 기존 기본 3개만 복제
+.\scripts\setup-windows.ps1 -SkipPythonInstall         # 8개 소스만 복제 (sprite-gen CLI 없음)
+.\scripts\setup-windows.ps1 -InstallForgeDependencies # Agent Sprite Forge Python 의존성 추가
+.\scripts\setup-windows.ps1 -InstallPixelOE           # 별도 .venv-pixeloe 생성, PyTorch 설치 (용량 큼)
+.\scripts\setup-windows.ps1 -UseLatest                # 새 소스만 최신 HEAD 사용, 기본은 고정 SHA
+.\scripts\health-check.ps1 -SkipVfxRender            # 렌더 없이 필수 진단
+```
+
+이미 있는 `tools/<도구명>`의 코드는 덮어쓰지 않고 보존하므로 같은 명령을 다시 실행해도 기존 체크아웃을 무단 변경하지 않습니다. `licenses/sources-installed.json`에 실제 설치 SHA가 기록됩니다. 설치에 문제가 있으면 `docs/TROUBLESHOOTING.md`를 참고하세요. Python은 3.11~3.13, Node.js는 20 이상을 권장합니다.
+
+### 13-2. 등록된 오픈소스 8개
+
+| 도구 | 대표 용도 | 기본 설치의 상태 |
+|---|---|---|
+| sprite-gen | 이미지 생성 연동, 프레임/알파/시트 정리 | 소스 + `.venv` CLI |
+| pixelfx | 코드 기반 픽셀 이펙트 | 소스 + Node CLI |
+| Sprite Fusion Pixel Snapper | 불규칙 도트 격자·팔레트 정리 | 소스만; Rust CLI 별도 설치 |
+| Agent Sprite Forge | AI 이미지/영상 기반 캐릭터 동작·맵·타일 | 소스만; 외부 모델/추가 패키지는 별개 |
+| Codixel | 참조 이미지 기반 코드 픽셀화·리깅 | 소스 + Node.js 라이브러리 |
+| Pixelbolt | JSON 레시피로 정적/동적 픽셀 아트 | 소스 + Node CLI |
+| 2dimg2motion | 한 이미지에서 AI 키프레임·중간 프레임 생성 | 소스/스킬만; image_gen 접근성 별개 |
+| PixelOE | 윤곽·명암 보존형 픽셀화 | 소스만; `-InstallPixelOE` 선택 설치 |
+
+각 저장소의 공식 README/SKILL.md가 **정확한 CLI 사용법의 기준**입니다. Pixelbolt 예시: `node tools/pixelbolt/bin/pixelbolt.js --help`. PixelOE 선택 설치 시 `.venv-pixeloe/Scripts/pixeloe.pixelize.exe --help`를 사용할 수 있지만, CLI는 원본 프로젝트가 구형 API라고 안내합니다.
+
+### 13-3. Codex가 필요한 도구만 선택
+
+루트 `AGENTS.md`와 `.agents/skills/tool-selector/SKILL.md`가 선택 규칙을 정의합니다. `tools/UPSTREAMS.json`에 기능·원본·고정 커밋을 기록하고, `config/tool-routing.json`에서 사용 우선순위와 정책을 조정합니다.
+
+- **수동 지정:** `Pixelbolt만 사용해 32×32 아이템을 만들어줘.` → 지정 도구만 사용
+- **자동 선택:** `32×32 캐릭터와 8프레임 대기 애니메이션을 만들어줘. 적절한 도구를 선택해.` → 사용 조건을 확인하고 주 도구 하나 선택
+- **승인 방식:** `사용할 도구와 이유를 먼저 알려주고 내 승인을 기다려.` → 승인 후 작업
+
+외부 API 호출, 원격 업로드, 요금 또는 인증이 필요한 이미지·영상 생성은 **무조건 사전 승인 대상**이야. 소스를 설치했다고 자동으로 API가 사용되는 게 아니며, ComfyUI/FLUX를 자동 연동하지 않습니다. 프로그램 자체 선택은 AI 지침이며 강제 샌드박스가 아니므로, 실제로 중요한 권한 차단은 Codex 실행 환경의 네트워크·승인 설정으로 통제하세요.
+
+### 13-4. 버전·라이선스·폴더 관리
+
+`tools/UPSTREAMS.json`에 적힌 40자리 SHA는 이 문서를 만든 시점의 **고정 기준 커밋**입니다. 여러 달 뒤에도 같은 코드를 가져오는 것이 원칙입니다. 새 HEAD를 원한다면 `-UseLatest`를 명시합니다. GitHub 공개 저장소가 삭제되거나 커밋 접근이 불가능해지면 재설치가 실패할 수 있으므로 설치 성공을 영구적으로 보장할 수는 없습니다.
+
+`tools/*` 원본 소스, `.venv*`, `licenses/sources-installed.json`, `outputs/`, `runs/`는 기본 `.gitignore` 대상입니다. GitHub에는 설정·스킬·스크립트·문서만 올립니다. 각 도구 라이선스 원문은 설치 후 `licenses/third-party/`에 복사되며, `docs/LICENSES.md`에 주요 의무를 정리했습니다.
+
+**다음 실행 순서:** `scripts/setup-windows.ps1` → `scripts/tool-status.ps1` → `scripts/health-check.ps1`. 처음부터 모든 도구를 함께 사용하지 말고, 하나의 에셋 요청에 적합한 주 도구를 선택해 테스트하세요.

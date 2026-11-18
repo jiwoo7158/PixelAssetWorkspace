@@ -19,3 +19,7 @@ description: Code-first 2D pixel art skill effects, explosions, magic, attacks a
 예시: `scripts/render-vfx.ps1 -Effect 'ice/frost-nova'`.
 
 절대로 Codex 이미지 생성 API 또는 ComfyUI/FLUX를 이 스킬의 암묵적 필수 단계로 추가하지 않는다.
+
+## v2: pixelfx 외 대안
+
+이펙트 요청에는 pixelfx가 기본 우선이지만 `Pixelbolt` 유체·레시피 기반 이펙트 또는 `Codixel` 리깅/코드 이펙트가 더 적합한 경우가 있다. `config/tool-routing.json`에서 후보를 확인하되, **요청에 필요하지 않은 도구들을 모두 실행하지 않는다.** 사용자가 pixelfx만 명시하면 그 도구만 사용한다.

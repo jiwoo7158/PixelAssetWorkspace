@@ -17,3 +17,15 @@ pixelfx는 모델이 없이도 코드 기반 이펙트를 렌더링합니다. sp
 
 ## 결과를 pixelfx/records에서만 찾을 수 있음
 직접 `node tools/render.mjs`를 호출하면 해당 저장소의 `records` 아래에 만들어집니다. 프로젝트 `outputs/vfx`에 결과를 복사하려면 `scripts/render-vfx.ps1` 사용을 권장합니다.
+
+## 새 Git clone에서 재설치
+
+Git, Node.js 20+, Python 3.11~3.13이 준비돼 있으면 `scripts/setup-windows.ps1`을 실행한다. 기본 설치는 8개 도구 **원본 저장소**를 내려받고 `sprite-gen`만 `.venv`에 설치한다. 네트워크가 필요하며, 업스트림 소스 용량이 클 수 있다. 새 도구는 소스만 존재할 수도 있으므로 `scripts/tool-status.ps1`에서 사용 가능 상태를 구분한다. 선택적 Python 설치는 `-InstallPixelOE` 또는 `-InstallForgeDependencies` 스위치를 사용한다. 외부 모델은 포함하지 않는다.
+
+## GitHub 복제 중 고정 커밋 fetch 실패
+
+기본 설치는 `tools/UPSTREAMS.json`에 기록된 커밋 SHA를 가져온다. 저장소에서 과거 커밋을 더 이상 얕게 가져올 수 없는 상황이 발생하면 먼저 해당 저장소 URL과 커밋을 확인하고, 필요할 때 `-UseLatest`로 다시 시도할 수 있다. `-UseLatest`는 새로 설치하는 소스에만 적용되며 이미 존재하는 체크아웃은 변경하지 않는다.
+
+## PowerShell 5.1 한글 깨짐
+
+수정된 `.ps1`은 UTF-8 BOM 인코딩으로 저장돼 있어 일반 Windows PowerShell 5.1에서 한글 문자열을 올바르게 읽을 수 있다. ZIP에서 받은 스크립트의 서명 실행 오류는 텍스트 인코딩과 다른 문제다. 실행 전에 내용을 검토하고 필요하다면 해당 파일만 `Unblock-File`한다. 시스템 실행 정책을 영구적으로 낮출 필요는 없다.

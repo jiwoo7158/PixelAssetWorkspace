@@ -1,0 +1,27 @@
+# Installed third-party repository clones (managed independently)
+tools/sprite-gen/
+tools/pixelfx/
+tools/spritefusion-pixel-snapper/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Generated results / user-imported references (do not commit by default)
+outputs/**
+!outputs/**/.gitkeep
+runs/**
+!runs/**/.gitkeep
+references/kenney/**
+!references/kenney/**/.gitkeep
+references/custom/**
+!references/custom/**/.gitkeep
+recipes/vfx/generated/**
+
+# Credentials / auto-discovered machine data
+.env
+.env.*
+!.env.example
+licenses/sources-installed.json
+licenses/third-party/**
+!licenses/third-party/.gitkeep

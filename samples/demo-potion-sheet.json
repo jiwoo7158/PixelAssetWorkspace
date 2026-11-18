@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "source": "original sample created for PixelAssetWorkspace",
+    "license": "project demo"
+  },
+  "frames": [
+    {
+      "name": "frame-0",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 24
+      },
+      "duration_ms": 180
+    },
+    {
+      "name": "frame-1",
+      "frame": {
+        "x": 24,
+        "y": 0,
+        "w": 24,
+        "h": 24
+      },
+      "duration_ms": 180
+    },
+    {
+      "name": "frame-2",
+      "frame": {
+        "x": 48,
+        "y": 0,
+        "w": 24,
+        "h": 24
+      },
+      "duration_ms": 180
+    },
+    {
+      "name": "frame-3",
+      "frame": {
+        "x": 72,
+        "y": 0,
+        "w": 24,
+        "h": 24
+      },
+      "duration_ms": 180
+    }
+  ]
+}

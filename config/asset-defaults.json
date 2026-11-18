@@ -1,0 +1,24 @@
+{
+  "format": "pixel-asset-workspace/v1",
+  "scope": {
+    "asset_type": "2d-pixel",
+    "engine_integration": false,
+    "local_image_model": false,
+    "agent": "codex-only"
+  },
+  "default_outputs": {
+    "sprite": "outputs/sprites",
+    "animation": "outputs/animations",
+    "vfx": "outputs/vfx"
+  },
+  "quality": {
+    "prefer_palette_colors": 16,
+    "preserve_originals": true,
+    "verify_alpha": true,
+    "pixel_snapping": "only_when_needed"
+  },
+  "external_api": {
+    "automatic_fallback": false,
+    "paid_calls_require_explicit_approval": true
+  }
+}

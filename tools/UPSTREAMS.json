@@ -1,0 +1,29 @@
+{
+  "note": "GitHub source repositories are downloaded by scripts/setup-windows.ps1; no full upstream source is packaged in this ZIP.",
+  "repositories": [
+    {
+      "name": "sprite-gen",
+      "url": "https://github.com/aldegad/sprite-gen",
+      "license": "Apache-2.0",
+      "purpose": "sprite curation, alpha extraction, atlas and manifests"
+    },
+    {
+      "name": "pixelfx",
+      "url": "https://github.com/patch-gg/pixelfx",
+      "license": "MIT",
+      "purpose": "code-based VFX sprite sheets"
+    },
+    {
+      "name": "spritefusion-pixel-snapper",
+      "url": "https://github.com/Hugo-Dz/spritefusion-pixel-snapper",
+      "license": "MIT",
+      "purpose": "optional pixel alignment CLI"
+    }
+  ],
+  "excluded": [
+    {
+      "name": "perfectPixel",
+      "reason": "LICENSE full text not confirmed in repository; no automatic vendoring"
+    }
+  ]
+}
